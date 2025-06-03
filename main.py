@@ -7,6 +7,11 @@ from loaderData import fetch_twelvedata, get_twelvedata_values
 
 app = FastAPI()
 
+#http://127.0.0.1:8000/ → check if API is live
+@app.get("/")
+def root():
+    return {"status": "API is live"}
+
 #http://127.0.0.1:8000/stock/?interval=1day&symbol=AMD → zwraca dane AMD
 @app.get("/stock/")
 def get_items(symbol: str, interval: Optional[str] = "1day"):
